@@ -1,2 +1,22 @@
-FROM node:latest
+# ------------------------------- 1. Buld Angular (HTML+JS)
+FROM node:latest AS builder
+WORKDIR /app/spa-builder
+
+# pre-cache dependencies
+COPY package.json package-lock.json ./
+RUN npm ci --no-color
+
+COPY . .
+RUN npm run build
+
+# ------------------------------- 2. Copy Angular from builder and Run web-server
+FROM nginx:latest
 WORKDIR /app/spa
+
+RUN rm -rf /usr/share/nginx/html/*
+
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=builder /app/spa-builder/dist/spa /usr/share/nginx/html
+
+EXPOSE 8080
+CMD ["nginx", "-g", "daemon off;"]

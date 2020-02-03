@@ -4,8 +4,8 @@ services:
     build:
       context: ./db
     image: db
-    restart: always
     container_name: db
+    restart: always
     ports:
       - '27017:27017'
     environment:
@@ -13,9 +13,9 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
   db-admin:
-    image: mongo-express:latest
     depends_on:
       - db
+    image: mongo-express:latest
     restart: always
     ports:
       - '8081:8081'
@@ -26,3 +26,19 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
       ME_CONFIG_MONGODB_PORT: 27017
+  bff:
+    depends_on:
+      - db
+    image: bff
+    build:
+      context: ./bff
+    ports:
+      - '5000:8080'
+  spa:
+    depends_on:
+      - bff
+    image: spa
+    build:
+      context: ./spa
+    ports:
+      - '8080:8080'
