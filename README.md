@@ -18,5 +18,3 @@ docker-compose build
 
 1. Execute `docker-compose up`
 2. Open in browser http://localhost:8080
-
-
