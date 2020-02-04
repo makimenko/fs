@@ -17,4 +17,4 @@ ENV jarFile bff-0.0.1-SNAPSHOT.jar
 
 COPY --from=builder /app/bff-builder/target/${jarFile} /app/bff/${jarFile}
 
-ENTRYPOINT java -jar /app/bff/${jarFile}
+ENTRYPOINT java -jar -Dspring.profiles.active=prod /app/bff/${jarFile}

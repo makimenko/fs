@@ -7,7 +7,7 @@ COPY package.json package-lock.json ./
 RUN npm ci --no-color
 
 COPY . .
-RUN npm run build
+RUN npx ng build --configuration="production"
 
 # ------------------------------- 2. Copy Angular from builder and Run web-server
 FROM nginx:latest

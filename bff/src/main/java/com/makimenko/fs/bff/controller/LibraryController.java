@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@CrossOrigin()
 @RequestMapping("/api/v1")
 public class LibraryController {
 
@@ -16,7 +17,7 @@ public class LibraryController {
     private BookRepository bookRepository;
 
     @GetMapping("/books")
-    public List<Book> getAllUsers() {
+    public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
 
