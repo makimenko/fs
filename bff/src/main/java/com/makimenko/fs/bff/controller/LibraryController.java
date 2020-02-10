@@ -1,7 +1,7 @@
 package com.makimenko.fs.bff.controller;
 
-import com.makimenko.fs.bff.model.Book;
-import com.makimenko.fs.bff.repository.BookRepository;
+import com.makimenko.fs.bff.dao.BookDao;
+import com.makimenko.fs.bff.domain.book.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,17 +13,18 @@ import java.util.List;
 @RequestMapping("/api/v1")
 public class LibraryController {
 
+
     @Autowired
-    private BookRepository bookRepository;
+    BookDao bookDao;
 
     @GetMapping("/books")
     public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+        return bookDao.getAllBooks();
     }
 
     @PostMapping("/books")
-    public Book createBook(@Valid @RequestBody Book book) {
-        return bookRepository.save(book);
+    public Book createBook(@Valid @RequestBody Book bookEntity) {
+        return bookDao.createBook(bookEntity);
     }
 
 }
