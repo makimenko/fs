@@ -32,8 +32,6 @@ services:
     image: bff
     build:
       context: ./bff
-      args:
-        MAVEN_OPTS: -Dhttp.proxyHost=gate-zrh-os.swissre.com -Dhttp.proxyPort=8080 -Dhttps.proxyHost=gate-zrh-os.swissre.com -Dhttpd.proxyPort=9443
     ports:
       - '5000:8080'
   spa:
