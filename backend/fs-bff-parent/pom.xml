@@ -12,8 +12,8 @@
 
     <modules>
         <module>fs-bff-common</module>
-        <module>fs-bff-data-access</module>
-        <module>fs-bff-web</module>
+        <module>fs-bff-persistence</module>
+        <!--module>fs-bff-web</module-->
     </modules>
 
     <properties>
@@ -171,6 +171,12 @@
             </dependency>
 
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-mongodb</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
                 <version>2.1.0</version>
@@ -190,6 +196,14 @@
                 <version>${spring.version}</version>
                 <scope>test</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring.boot.version}</version>
+                <scope>test</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

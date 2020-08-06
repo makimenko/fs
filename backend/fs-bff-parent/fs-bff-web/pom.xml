@@ -16,6 +16,16 @@
 
 
     <dependencies>
+        <dependency>
+            <groupId>com.makimenko.fs</groupId>
+            <artifactId>fs-bff-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.makimenko.fs</groupId>
+            <artifactId>fs-bff-persistence-mongodb</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

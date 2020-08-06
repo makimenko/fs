@@ -26,19 +26,3 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
       ME_CONFIG_MONGODB_PORT: 27017
-  bff:
-    depends_on:
-      - db
-    image: bff
-    build:
-      context: ./bff
-    ports:
-      - '5000:8080'
-  spa:
-    depends_on:
-      - bff
-    image: spa
-    build:
-      context: ./spa
-    ports:
-      - '8080:8080'
