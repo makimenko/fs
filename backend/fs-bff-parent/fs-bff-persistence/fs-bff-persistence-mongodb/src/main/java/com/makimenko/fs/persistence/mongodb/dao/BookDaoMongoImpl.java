@@ -4,7 +4,6 @@ import com.makimenko.fs.common.dao.BookDao;
 import com.makimenko.fs.common.domain.book.Book;
 import com.makimenko.fs.persistence.mongodb.entity.BookEntity;
 import com.makimenko.fs.persistence.mongodb.repository.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,8 +12,11 @@ import java.util.stream.Collectors;
 @Component
 public class BookDaoMongoImpl implements BookDao {
 
-    @Autowired
     private BookRepository bookRepository;
+
+    public BookDaoMongoImpl(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     @Override
     public List<Book> getAllBooks() {

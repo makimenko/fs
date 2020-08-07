@@ -2,15 +2,13 @@ package com.makimenko.fs.persistence.mongodb.entity;
 
 
 import com.makimenko.fs.common.domain.book.Book;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 import java.util.UUID;
 
+@Data
 public class BookEntity extends BusinessEntity<Book> {
-
-    public BookEntity() {
-
-    }
 
     public BookEntity(Book book) {
         this.updateEntity(book);
@@ -21,21 +19,6 @@ public class BookEntity extends BusinessEntity<Book> {
 
     String title;
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     @Override
     public Book toDomain() {

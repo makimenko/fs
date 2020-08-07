@@ -1,18 +1,13 @@
 package com.makimenko.fs.persistence.mongodb;
 
-import com.makimenko.fs.common.dao.BookDao;
 import com.makimenko.fs.persistence.mongodb.config.MongoDbConfig;
-import com.makimenko.fs.persistence.mongodb.dao.BookDaoMongoImpl;
 import org.springframework.boot.SpringBootConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Import;
 
 @SpringBootConfiguration
-@ComponentScan({
-        "com.makimenko.fs.persistence.mongodb"
-})
+@EnableAutoConfiguration
+@Import(MongoDbConfig.class)
 public class TestConfig {
-
 
 }

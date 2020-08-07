@@ -5,20 +5,20 @@ import com.makimenko.fs.common.dao.BookDao;
 import com.makimenko.fs.common.domain.book.Book;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-
-public class BookTest extends AbstractTest {
+@SpringBootTest
+public class BookTest {
 
     @Autowired
-    BookDao dao;
+    private BookDao dao;
 
     @Test
-    public void dummy() {
+    public void getAllBooks() {
         List<Book> books = dao.getAllBooks();
     }
-
 
 }
 

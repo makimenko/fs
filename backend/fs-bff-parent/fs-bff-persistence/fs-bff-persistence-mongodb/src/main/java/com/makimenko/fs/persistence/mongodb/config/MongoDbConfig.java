@@ -8,4 +8,5 @@ import org.springframework.context.annotation.Configuration;
         "com.makimenko.fs.persistence.mongodb"
 })
 public class MongoDbConfig {
+
 }
