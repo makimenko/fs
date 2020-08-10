@@ -3,12 +3,10 @@ package com.makimenko.fs.persistence.mongodb.entity;
 
 import com.makimenko.fs.common.domain.book.Book;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
 import java.util.UUID;
 
-@NoArgsConstructor
 @Data
 public class BookEntity extends BusinessEntity<Book> {
 

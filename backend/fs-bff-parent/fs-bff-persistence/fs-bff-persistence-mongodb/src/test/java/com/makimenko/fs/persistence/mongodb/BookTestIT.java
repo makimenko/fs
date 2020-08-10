@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-public class BookTest {
+public class BookTestIT {
 
     @Autowired
     private BookDao dao;
