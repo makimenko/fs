@@ -10,7 +10,7 @@ server:
     connection-timeout: PT20M
   error:
     include-stacktrace: on_param
-  port: 8090
+  port: 5000
 
 logging:
   level:
