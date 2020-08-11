@@ -1,11 +1,16 @@
 application:
   name: fs-web
 
+security:
+  basic:
+    enabled: false
+
 server:
   tomcat:
     connection-timeout: PT20M
   error:
     include-stacktrace: on_param
+  port: 8090
 
 logging:
   level:
