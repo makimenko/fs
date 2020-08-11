@@ -16,11 +16,10 @@ logging:
 
 spring:
   data:
-    com.makimenko.bff.data:
-      mongodb:
-        host: localhost
-        port: 27017
-        database: fs
-        username: root
-        password: example
-        authentication-database: admin
+    mongodb:
+      host: localhost
+      port: 27017
+      database: fs
+      username: root
+      password: example
+      authentication-database: admin

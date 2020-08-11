@@ -1,8 +1,7 @@
-package com.makimenko.fs.common.persistence.mongodb.bff.controller;
+package com.makimenko.fs.web.controller;
 
-import dao.BookDao;
-import com.makimenko.fs.bff.domain.book.Book;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.makimenko.fs.common.dao.BookDao;
+import com.makimenko.fs.common.domain.book.Book;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -13,9 +12,11 @@ import java.util.List;
 @RequestMapping("/api/v1")
 public class LibraryController {
 
+    private BookDao bookDao;
 
-    @Autowired
-    BookDao bookDao;
+    public LibraryController(BookDao bookDao) {
+        this.bookDao = bookDao;
+    }
 
     @GetMapping("/books")
     public List<Book> getAllBooks() {
