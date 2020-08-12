@@ -28,7 +28,7 @@ jobs:
       with:
         login-server: docker.pkg.github.com
         username: $GITHUB_ACTOR
-        password: ${{ secrets.GITHUB_TOKEazN }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS_DEV_DB }}
