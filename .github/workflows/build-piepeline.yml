@@ -23,15 +23,31 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - name: Login
-      uses: azure/docker-login@v1
-      with:
-        login-server: docker.pkg.github.com
-        username: $GITHUB_ACTOR
-        password: ${{ secrets.GITHUB_TOKEN }}
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS_DEV_DB }}
+    - name: Set Web App ACR authentication
+      uses: Azure/appservice-settings@v1
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }} 
+        app-settings-json: |
+          [
+              {
+                  "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+                  "value": "${{ secrets.GITHUB_TOKEN }}",
+                  "slotSetting": false
+              },
+              {
+                  "name": "DOCKER_REGISTRY_SERVER_URL",
+                  "value": "https://docker.pkg.github.com",
+                  "slotSetting": false
+              },
+              {
+                  "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+                  "value": "makimenko",
+                  "slotSetting": false
+              }
+          ]
     - name: Deploy
       uses: azure/webapps-deploy@v2
       with: 
