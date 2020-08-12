@@ -33,10 +33,7 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS_DEV_DB }}
     - name: Deploy
-      uses: 'azure/aci-deploy@v1'
+      uses: azure/webapps-container-deploy@v1
       with:
-        resource-group: makimenko-fs-dev
-        dns-name-label: makimenko-fs-dev-app-db.azurewebsites.net
-        image: docker.pkg.github.com/makimenko/fs/db:${{ github.run_number }}
-        name: makimenko-fs-dev-app-db
-        location: 'North Europe'
+        app-name: makimenko-fs-dev-app-db
+        images: docker.pkg.github.com/makimenko/fs/db:${{ github.run_number }}
