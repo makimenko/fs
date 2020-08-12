@@ -33,7 +33,7 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS_DEV_DB }}
     - name: Deploy
-      uses: azure/webapps-container-deploy@v1
-      with:
+      uses: azure/webapps-deploy@v2
+      with: 
         app-name: makimenko-fs-dev-app-db
         images: docker.pkg.github.com/makimenko/fs/db:${{ github.run_number }}
