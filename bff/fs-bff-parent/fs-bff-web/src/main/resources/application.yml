@@ -36,7 +36,7 @@ spring:
   data:
     mongodb:
       host: makimenko-fs-dev-app-db.azurewebsites.net
-      port: 80
+      port: 27017
       database: fs
       username: root
       password: example
