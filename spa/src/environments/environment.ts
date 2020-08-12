@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  bffUrl: 'http://localhost:8080/api/v1'
+  bffUrl: 'http://localhost:5000/api/v1'
 };
 
 /*

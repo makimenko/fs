@@ -3,8 +3,8 @@ services:
   db:
     build:
       context: ./db
-    image: db
-    container_name: db
+    image: fs-db
+    container_name: fs-db
     restart: always
     ports:
       - '27017:27017'
@@ -29,16 +29,18 @@ services:
   bff:
     depends_on:
       - db
-    image: bff
     build:
       context: ./bff
+    image: bff
+    environment:
+      PROFILE: dev
     ports:
-      - '5000:8080'
+      - '5000:5000'
   spa:
     depends_on:
       - bff
-    image: spa
     build:
       context: ./spa
+    image: spa
     ports:
       - '8080:8080'

@@ -2,7 +2,8 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {BookListComponent} from './book-list/book-list.component';
-
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,9 @@ import {BookListComponent} from './book-list/book-list.component';
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class BooksModule {

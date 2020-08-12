@@ -1,0 +1,14 @@
+logging:
+  level:
+    root: INFO
+    com.makimenko.fs: INFO
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: fs
+      username: root
+      password: example
+      authentication-database: admin

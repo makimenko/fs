@@ -18,7 +18,7 @@ export class BookListComponent implements OnInit {
     this.reload();
   }
 
-  public reload() {
+  public reload(): void {
     this.booksApi.getBooks().subscribe(data => this.books = data);
   }
 

@@ -1,20 +1,19 @@
 # ------------------------------- 1. Buld JAR file
 FROM maven:latest as builder
-WORKDIR /app/bff-builder
+WORKDIR /app/backend-builder
 
-# This step is separate. For optimization (dependencies are rarely changed. Docker step will be pre-cached)
-COPY ./pom.xml ./pom.xml
-RUN mvn dependency:resolve
+ARG MAVEN_OPTS
 
-COPY ./src ./src
+COPY ./fs-bff-parent .
 RUN mvn package
 
 # ------------------------------- 2. Copy JAR from builder and Run application
 FROM openjdk:latest
-WORKDIR /app/bff
+WORKDIR /app/backend
 
-ENV jarFile bff-0.0.1-SNAPSHOT.jar
+ENV jarFile fs-bff-web-1.0.0.jar
 
-COPY --from=builder /app/bff-builder/target/${jarFile} /app/bff/${jarFile}
+COPY --from=builder /app/backend-builder/fs-bff-web/target/${jarFile} /app/backend/${jarFile}
 
-ENTRYPOINT java -jar -Dspring.profiles.active=prod /app/bff/${jarFile}
+ENV RUNTIME_PROFILE=$RUNTIME_PROFILE
+ENTRYPOINT java -jar -Dspring.profiles.active=${RUNTIME_PROFILE} /app/backend/${jarFile}

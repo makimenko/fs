@@ -1,0 +1,30 @@
+application:
+  name: fs-web
+
+security:
+  basic:
+    enabled: false
+
+server:
+  tomcat:
+    connection-timeout: PT20M
+  error:
+    include-stacktrace: on_param
+  port: 5000
+
+logging:
+  level:
+    root: INFO
+    com.makimenko.fs: INFO
+    org.springframework.web: DEBUG
+    org.hibernate: ERROR
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: fs
+      username: root
+      password: example
+      authentication-database: admin
