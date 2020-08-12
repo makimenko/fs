@@ -34,7 +34,7 @@ jobs:
           [
               {
                   "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
-                  "value": "${{ secrets.GITHUB_DOCKER_REPO_TOKEN }}",
+                  "value": "${{ secrets.DOCKER_REPO_TOKEN }}",
                   "slotSetting": false
               },
               {
@@ -44,7 +44,7 @@ jobs:
               },
               {
                   "name": "DOCKER_REGISTRY_SERVER_USERNAME",
-                  "value": "makimenko",
+                  "value": "_",
                   "slotSetting": false
               }
           ]
