@@ -1,4 +1,4 @@
 FROM mongo:latest
 WORKDIR /app/db
 
-EXPOSE 80 27017
+EXPOSE 27017
