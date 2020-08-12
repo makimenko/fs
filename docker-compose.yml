@@ -3,8 +3,8 @@ services:
   db:
     build:
       context: ./db
-    image: db
-    container_name: db
+    image: fs-db
+    container_name: fs-db
     restart: always
     ports:
       - '27017:27017'
@@ -26,3 +26,21 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
       ME_CONFIG_MONGODB_PORT: 27017
+  bff:
+    depends_on:
+      - db
+    build:
+      context: ./bff
+    image: bff
+    environment:
+      PROFILE: dev
+    ports:
+      - '5000:5000'
+  spa:
+    depends_on:
+      - bff
+    build:
+      context: ./spa
+    image: spa
+    ports:
+      - '8080:8080'
