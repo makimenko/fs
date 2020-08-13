@@ -3,7 +3,7 @@ services:
   db:
     build:
       context: ./db
-    image: fs-db
+    image: db
     container_name: fs-db
     restart: always
     ports:

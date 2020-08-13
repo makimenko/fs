@@ -28,3 +28,16 @@ spring:
       username: root
       password: example
       authentication-database: admin
+
+
+---
+spring:
+  profiles: dev
+  data:
+    mongodb:
+      host: makimenko-fs-dev-app-db.azurewebsites.net
+      port: 27017
+      database: fs
+      username: root
+      password: example
+      authentication-database: admin
