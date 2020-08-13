@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Build
+    - name: Docker Compose Build
       run: docker-compose build
     - name: Login
       uses: azure/docker-login@v1
@@ -15,13 +15,13 @@ jobs:
         login-server: docker.pkg.github.com
         username: $GITHUB_ACTOR
         password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Tag
+    - name: Tag and Push Images
+      if: ${{ github.ref == 'refs/heads/master' }}
       run: |
         docker tag db docker.pkg.github.com/makimenko/fs/db:${{ github.run_number }}
         docker tag bff docker.pkg.github.com/makimenko/fs/bff:${{ github.run_number }}
         docker tag spa docker.pkg.github.com/makimenko/fs/spa:${{ github.run_number }}
-    - name: Push
-      run: |
+
         docker push docker.pkg.github.com/makimenko/fs/db:${{ github.run_number }}
         docker push docker.pkg.github.com/makimenko/fs/bff:${{ github.run_number }}
         docker push docker.pkg.github.com/makimenko/fs/spa:${{ github.run_number }}
