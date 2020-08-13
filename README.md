@@ -1,4 +1,4 @@
-![CI build status](https://github.com/makimenko/fs/workflows/CI/badge.svg)
+![CI build status](https://github.com/makimenko/fs/workflows/build/badge.svg)
 
 # Full Stack Template
 
