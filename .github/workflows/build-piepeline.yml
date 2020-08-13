@@ -3,12 +3,12 @@ name: build
 on: [push]
 
 jobs:
-  build:
+  build-db:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Docker Compose Build
-      run: docker-compose build
+      run: docker-compose build db
     - name: Login
       uses: azure/docker-login@v1
       with:
@@ -19,12 +19,43 @@ jobs:
       if: ${{ github.ref == 'refs/heads/master' }}
       run: |
         docker tag db docker.pkg.github.com/makimenko/fs/db:${{ github.run_number }}
-        docker tag bff docker.pkg.github.com/makimenko/fs/bff:${{ github.run_number }}
-        docker tag spa docker.pkg.github.com/makimenko/fs/spa:${{ github.run_number }}
-
         docker push docker.pkg.github.com/makimenko/fs/db:${{ github.run_number }}
+  build-bff:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Docker Compose Build
+      run: docker-compose build spa
+    - name: Login
+      uses: azure/docker-login@v1
+      with:
+        login-server: docker.pkg.github.com
+        username: $GITHUB_ACTOR
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Tag and Push Images
+      if: ${{ github.ref == 'refs/heads/master' }}
+      run: |
+        docker tag bff docker.pkg.github.com/makimenko/fs/bff:${{ github.run_number }}
         docker push docker.pkg.github.com/makimenko/fs/bff:${{ github.run_number }}
+  build-spa:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Docker Compose Build
+      run: docker-compose build spa
+    - name: Login
+      uses: azure/docker-login@v1
+      with:
+        login-server: docker.pkg.github.com
+        username: $GITHUB_ACTOR
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Tag and Push Images
+      if: ${{ github.ref == 'refs/heads/master' }}
+      run: |
+        docker tag spa docker.pkg.github.com/makimenko/fs/spa:${{ github.run_number }}
         docker push docker.pkg.github.com/makimenko/fs/spa:${{ github.run_number }}
+
+
   # deploy:
   #   needs: build
   #   runs-on: ubuntu-latest
