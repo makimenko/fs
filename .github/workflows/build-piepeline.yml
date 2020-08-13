@@ -16,40 +16,46 @@ jobs:
         username: $GITHUB_ACTOR
         password: ${{ secrets.GITHUB_TOKEN }}
     - name: Tag
-      run: docker tag db docker.pkg.github.com/makimenko/fs/db:${{ github.run_number }}
+      run: |
+        docker tag db docker.pkg.github.com/makimenko/fs/db:${{ github.run_number }}
+        docker tag bff docker.pkg.github.com/makimenko/fs/bff:${{ github.run_number }}
+        docker tag spa docker.pkg.github.com/makimenko/fs/spa:${{ github.run_number }}
     - name: Push
-      run: docker push docker.pkg.github.com/makimenko/fs/db:${{ github.run_number }}
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS_DEV_DB }}
-    - name: Set Web App ACR authentication
-      uses: Azure/appservice-settings@v1
-      with:
-        app-name: makimenko-fs-dev-app-db
-        app-settings-json: |
-          [
-              {
-                  "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
-                  "value": "${{ secrets.DOCKER_REPO_TOKEN }}",
-                  "slotSetting": false
-              },
-              {
-                  "name": "DOCKER_REGISTRY_SERVER_URL",
-                  "value": "https://docker.pkg.github.com",
-                  "slotSetting": false
-              },
-              {
-                  "name": "DOCKER_REGISTRY_SERVER_USERNAME",
-                  "value": "_",
-                  "slotSetting": false
-              }
-          ]
-    - name: Deploy
-      uses: azure/webapps-deploy@v2
-      with: 
-        app-name: makimenko-fs-dev-app-db
-        images: docker.pkg.github.com/makimenko/fs/db:${{ github.run_number }}
+      run: |
+        docker push docker.pkg.github.com/makimenko/fs/db:${{ github.run_number }}
+        docker push docker.pkg.github.com/makimenko/fs/bff:${{ github.run_number }}
+        docker push docker.pkg.github.com/makimenko/fs/spa:${{ github.run_number }}
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: azure/login@v1
+  #     with:
+  #       creds: ${{ secrets.AZURE_CREDENTIALS_DEV_DB }}
+  #   - name: Set Web App ACR authentication
+  #     uses: Azure/appservice-settings@v1
+  #     with:
+  #       app-name: makimenko-fs-dev-app-db
+  #       app-settings-json: |
+  #         [
+  #             {
+  #                 "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+  #                 "value": "${{ secrets.DOCKER_REPO_TOKEN }}",
+  #                 "slotSetting": false
+  #             },
+  #             {
+  #                 "name": "DOCKER_REGISTRY_SERVER_URL",
+  #                 "value": "https://docker.pkg.github.com",
+  #                 "slotSetting": false
+  #             },
+  #             {
+  #                 "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+  #                 "value": "_",
+  #                 "slotSetting": false
+  #             }
+  #         ]
+  #   - name: Deploy
+  #     uses: azure/webapps-deploy@v2
+  #     with: 
+  #       app-name: makimenko-fs-dev-app-db
+  #       images: docker.pkg.github.com/makimenko/fs/db:${{ github.run_number }}
