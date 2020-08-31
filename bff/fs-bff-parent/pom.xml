@@ -11,7 +11,7 @@
     <name>FS BFF - Parent</name>
 
     <modules>
-        <module>fs-bff-common</module>
+        <module>fs-bff-domain</module>
         <module>fs-bff-persistence</module>
         <module>fs-bff-web</module>
     </modules>
