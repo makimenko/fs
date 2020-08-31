@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>com.makimenko.fs</groupId>
-            <artifactId>fs-bff-common</artifactId>
+            <artifactId>fs-bff-domain</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

@@ -1,7 +1,7 @@
 package com.makimenko.fs.persistence.dao;
 
 
-import com.makimenko.fs.common.domain.book.Book;
+import com.makimenko.fs.domain.book.Book;
 
 import java.util.List;
 

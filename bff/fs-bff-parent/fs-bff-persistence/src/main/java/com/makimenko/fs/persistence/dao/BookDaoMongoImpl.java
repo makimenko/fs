@@ -1,7 +1,6 @@
 package com.makimenko.fs.persistence.dao;
 
-import com.makimenko.fs.common.dao.BookDao;
-import com.makimenko.fs.common.domain.book.Book;
+import com.makimenko.fs.domain.book.Book;
 import com.makimenko.fs.persistence.repository.BookRepository;
 import org.springframework.stereotype.Component;
 

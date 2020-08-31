@@ -1,7 +1,7 @@
 package com.makimenko.fs.web.controller;
 
-import com.makimenko.fs.common.dao.BookDao;
-import com.makimenko.fs.common.domain.book.Book;
+import com.makimenko.fs.domain.book.Book;
+import com.makimenko.fs.persistence.dao.BookDao;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 

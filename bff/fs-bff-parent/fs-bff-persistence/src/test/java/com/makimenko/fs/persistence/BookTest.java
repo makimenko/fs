@@ -1,8 +1,7 @@
 package com.makimenko.fs.persistence;
 
-
-import com.makimenko.fs.common.dao.BookDao;
-import com.makimenko.fs.common.domain.book.Book;
+import com.makimenko.fs.domain.book.Book;
+import com.makimenko.fs.persistence.dao.BookDao;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
