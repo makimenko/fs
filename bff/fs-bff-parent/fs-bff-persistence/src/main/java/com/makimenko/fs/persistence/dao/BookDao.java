@@ -13,6 +13,6 @@ public interface BookDao {
 
     List<Book> findByTitle(String title);
 
-    List<Book> findByBookGenre(BookGenre bookGenre);
+    List<Book> findByBookGenre(List<String> bookGenreIds);
 
 }

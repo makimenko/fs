@@ -37,8 +37,8 @@ public class BookDaoMongoImpl implements BookDao {
     }
 
     @Override
-    public List<Book> findByBookGenre(BookGenre bookGenre) {
-        return bookRepository.findByBookGenre(bookGenre);
+    public List<Book> findByBookGenre(List<String> bookGenreIds) {
+        return bookRepository.findByBookGenre(bookGenreIds);
     }
 
 }
