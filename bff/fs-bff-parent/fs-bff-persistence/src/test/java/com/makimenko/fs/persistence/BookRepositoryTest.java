@@ -4,12 +4,13 @@ import com.makimenko.fs.domain.book.Book;
 import com.makimenko.fs.domain.book.BookGenre;
 import com.makimenko.fs.persistence.repository.BookGenreRepository;
 import com.makimenko.fs.persistence.repository.BookRepository;
-import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -55,37 +56,26 @@ public class BookRepositoryTest {
 
     @Test
     public void findByBookGenre() {
-        BookGenre comedy = new BookGenre();
-        comedy.setId("C");
-        comedy.setName("Comedy");
-
-        BookGenre drama = new BookGenre();
-        drama.setId("D");
-        drama.setName("Drama");
-
-        BookGenre music = new BookGenre();
-        drama.setId("M");
-        drama.setName("Music");
 
         Book book = new Book();
         book.setId(UUID.randomUUID());
         book.setTitle("The Catcher In The Rye");
 
-        book.setBookGenres(new BookGenre[]{comedy, drama});
+        book.setBookGenreIds(Arrays.asList("C", "D"));
         bookRepository.save(book);
 
         List<Book> searchResult;
 
-        searchResult = bookRepository.findByBookGenre(Lists.list(music.getId()));
+        searchResult = bookRepository.findByBookGenre(Arrays.asList("M"));
         assertEquals(0, searchResult.size());
 
-        searchResult = bookRepository.findByBookGenre(Lists.list(comedy.getId()));
+        searchResult = bookRepository.findByBookGenre(Arrays.asList("C"));
         assertEquals(1, searchResult.size());
 
-        searchResult = bookRepository.findByBookGenre(Lists.list(music.getId(), drama.getId()));
+        searchResult = bookRepository.findByBookGenre(Arrays.asList("M", "D"));
         assertEquals(1, searchResult.size());
 
-        searchResult = bookRepository.findByBookGenre(Lists.emptyList());
+        searchResult = bookRepository.findByBookGenre(Arrays.asList());
         assertEquals(0, searchResult.size());
     }
 
@@ -101,7 +91,9 @@ public class BookRepositoryTest {
         Book book = new Book();
         book.setId(UUID.randomUUID());
         book.setTitle("Test Book");
-        book.setBookGenres(new BookGenre[]{comedy});
+
+
+        book.setBookGenreIds(Arrays.asList("X"));
 
         bookRepository.save(book);
 
