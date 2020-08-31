@@ -1,6 +1,7 @@
 package com.makimenko.fs.persistence.dao;
 
 import com.makimenko.fs.domain.book.Book;
+import com.makimenko.fs.domain.book.BookGenre;
 import com.makimenko.fs.persistence.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -33,6 +34,11 @@ public class BookDaoMongoImpl implements BookDao {
     @Override
     public List<Book> findByTitle(String title) {
         return bookRepository.findByTitle(title);
+    }
+
+    @Override
+    public List<Book> findByBookGenre(BookGenre bookGenre) {
+        return bookRepository.findByBookGenre(bookGenre);
     }
 
 }
