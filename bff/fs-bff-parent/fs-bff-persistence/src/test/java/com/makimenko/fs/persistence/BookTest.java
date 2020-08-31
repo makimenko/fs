@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @ActiveProfiles("test")
 @DataMongoTest
@@ -27,8 +28,23 @@ public class BookTest {
         dao.createBook(book);
 
         List<Book> books = dao.getAllBooks();
-        assertEquals(1, books.size());
+        assertTrue(books.size() > 0);
     }
 
+
+    @Test
+    public void findByTitle() {
+        Book book = new Book();
+        book.setId(UUID.randomUUID());
+        book.setTitle("ABC");
+        dao.createBook(book);
+
+        List<Book> books;
+        books = dao.findByTitle("AAA");
+        assertEquals(0, books.size());
+
+        books = dao.findByTitle("abc");
+        assertEquals(1, books.size());
+    }
 }
 
