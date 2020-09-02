@@ -79,28 +79,4 @@ public class BookRepositoryTest {
         assertEquals(0, searchResult.size());
     }
 
-
-    @Test
-    public void queryJoin() {
-        BookGenre comedy = new BookGenre();
-        comedy.setId("X");
-        comedy.setName("XYZ");
-
-        bookGenreRepository.save(comedy);
-
-        Book book = new Book();
-        book.setId(UUID.randomUUID());
-        book.setTitle("Test Book");
-
-
-        book.setBookGenreIds(Arrays.asList("X"));
-
-        bookRepository.save(book);
-
-        // TODO: implement join
-        // https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#examples
-        // https://habr.com/ru/post/413123/
-
-    }
-
 }

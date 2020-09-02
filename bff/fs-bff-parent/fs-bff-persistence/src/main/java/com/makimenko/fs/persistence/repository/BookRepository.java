@@ -17,4 +17,10 @@ public interface BookRepository extends MongoRepository<Book, UUID> {
     @Query(value = "{'bookGenreIds': {$in : [?0]} }")
     List<Book> findByBookGenre(List<String> bookGenreIds);
 
+    @Query(
+            value = "{'bookGenreIds': {$in : [?0]} }",
+            fields = "{id:1, title:1, bookGenreIds:1}"
+    )
+    List<Book> findBookList(List<String> bookGenreIds);
+
 }
