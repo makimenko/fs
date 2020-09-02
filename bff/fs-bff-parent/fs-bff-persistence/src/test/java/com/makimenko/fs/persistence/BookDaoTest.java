@@ -60,14 +60,13 @@ public class BookDaoTest {
         assertNotNull(i.getBookGenres());
         assertEquals("XYZ", i.getBookGenres().get(0).getName());
 
-    }
 
-    // @Test
-    public void queryJoin() {
-        // TODO: implement join
-        // https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/#examples
-        // https://habr.com/ru/post/413123/
-
+        comedy.setName("XYZ-UPDATED");
+        bookGenreRepo.save(comedy);
+        bookList = dao.findBooks(Lists.list("X"));
+        i = bookList.get(0);
+        // TODO: test failing (value not cached)
+        assertEquals("XYZ", i.getBookGenres().get(0).getName());
     }
 
 }

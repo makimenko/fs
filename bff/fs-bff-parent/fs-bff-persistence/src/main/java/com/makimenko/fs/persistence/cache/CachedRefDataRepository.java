@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public interface CachedRefDataRepository<T> extends MongoRepository<T, String> {
 
-    @Cacheable
+    @Cacheable("BookGenre")
     @Override
     Optional<T> findById(String s);
 
