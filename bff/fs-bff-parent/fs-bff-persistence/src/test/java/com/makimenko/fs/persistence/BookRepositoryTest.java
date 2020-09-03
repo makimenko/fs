@@ -1,7 +1,6 @@
 package com.makimenko.fs.persistence;
 
 import com.makimenko.fs.domain.book.Book;
-import com.makimenko.fs.domain.book.BookGenre;
 import com.makimenko.fs.persistence.repository.BookGenreRepository;
 import com.makimenko.fs.persistence.repository.BookRepository;
 import org.junit.jupiter.api.Test;
@@ -10,7 +9,6 @@ import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 

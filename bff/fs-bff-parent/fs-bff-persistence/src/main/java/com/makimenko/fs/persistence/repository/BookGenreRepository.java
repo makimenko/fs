@@ -10,9 +10,10 @@ import java.util.Optional;
 @Component
 public interface BookGenreRepository extends MongoRepository<BookGenre, String> {
 
-    public static String CACHE_ID = "cachedBookGenre";
+    String CACHE_ID = "BookGenreRepository";
 
     @Cacheable(CACHE_ID)
     @Override
     Optional<BookGenre> findById(String s);
+
 }
