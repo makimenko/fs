@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 @Document
 @NoArgsConstructor
@@ -15,7 +16,7 @@ public class Book extends BusinessData {
 
     private String title;
 
-    private List<String> authors;
+    private List<UUID> authors;
 
     private List<String> bookGenres;
 

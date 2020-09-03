@@ -81,23 +81,6 @@ public class BookRepositoryTest {
         assertEquals(0, searchResult.size());
     }
 
-    @Test
-    public void findBookList() {
-
-        Book book = new Book();
-        book.setId(UUID.randomUUID());
-        book.setTitle("The Catcher In The Rye");
-
-        book.setBookGenres(asList("G1", "G2"));
-        book.setAuthors(asList("X", "Y"));
-        bookRepository.save(book);
-
-        List<Book> searchResult;
-
-        //searchResult = bookRepository.findBookList("", asList("V"), asList("M"));
-        //assertEquals(0, searchResult.size());
-
-    }
 
 
 }
