@@ -1,3 +1,10 @@
+logging:
+  level:
+    root: INFO
+    com.makimenko.fs: INFO
+    org.springframework.cache: TRACE
+
+
 ---
 spring:
   profiles: test
