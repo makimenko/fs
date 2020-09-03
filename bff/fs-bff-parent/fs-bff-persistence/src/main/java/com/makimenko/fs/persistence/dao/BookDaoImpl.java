@@ -26,8 +26,8 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public List<BookList> findBooks(List<String> bookGenreIds) {
-        List<BookList> result = bookRepo.findBookList(bookGenreIds)
+    public List<BookList> findBooks(List<String> bookGenres) {
+        List<BookList> result = bookRepo.findBookList(bookGenres)
                 .stream()
                 .map(this::toBookList)
                 .collect(Collectors.toList());
@@ -39,7 +39,7 @@ public class BookDaoImpl implements BookDao {
         BookList result = new BookList();
         result.setId(book.getId());
         result.setTitle(book.getTitle());
-        result.setBookGenres(refList(book.getBookGenreIds(), bookGenreRepository::findById));
+        result.setBookGenres(refList(book.getBookGenres(), bookGenreRepository::findById));
         return result;
     }
 

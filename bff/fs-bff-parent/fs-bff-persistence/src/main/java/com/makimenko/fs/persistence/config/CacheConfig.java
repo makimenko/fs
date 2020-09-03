@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
 
+import static java.util.Arrays.asList;
+
 @Configuration
 @EnableCaching
 public class CacheConfig {
@@ -17,7 +19,7 @@ public class CacheConfig {
     @Bean
     public CacheManager cacheManager() {
         SimpleCacheManager cacheManager = new SimpleCacheManager();
-        cacheManager.setCaches(Arrays.asList(
+        cacheManager.setCaches(asList(
                 new ConcurrentMapCache(BookGenreRepository.CACHE_ID))
         );
         return cacheManager;

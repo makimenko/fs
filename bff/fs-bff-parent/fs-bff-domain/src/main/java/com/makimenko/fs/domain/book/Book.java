@@ -14,9 +14,13 @@ import java.util.List;
 public class Book extends BusinessData {
 
     private String title;
-    private Author author;
-    private List<String> bookGenreIds;
+
+    private List<String> authors;
+
+    private List<String> bookGenres;
+
     private int avgRank;
+
     private LocalDate releaseDate;
 
 }

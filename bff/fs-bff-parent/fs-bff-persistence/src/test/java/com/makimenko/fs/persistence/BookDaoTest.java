@@ -6,16 +6,15 @@ import com.makimenko.fs.domain.book.BookList;
 import com.makimenko.fs.persistence.dao.BookDao;
 import com.makimenko.fs.persistence.repository.BookGenreRepository;
 import com.makimenko.fs.persistence.repository.BookRepository;
-import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
+import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -44,15 +43,15 @@ public class BookDaoTest {
         Book book = new Book();
         book.setId(UUID.randomUUID());
         book.setTitle("Test Book");
-        book.setBookGenreIds(Arrays.asList("X"));
+        book.setBookGenres(asList("X"));
         bookRepo.save(book);
 
         // Validate:
         List<BookList> bookList;
-        bookList = dao.findBooks(Lists.list("Y"));
+        bookList = dao.findBooks(asList("Y"));
         assertEquals(0, bookList.size());
 
-        bookList = dao.findBooks(Lists.list("X"));
+        bookList = dao.findBooks(asList("X"));
         assertEquals(1, bookList.size());
 
         BookList i = bookList.get(0);
@@ -63,7 +62,7 @@ public class BookDaoTest {
 
         comedy.setName("XYZ-UPDATED");
         bookGenreRepo.save(comedy);
-        bookList = dao.findBooks(Lists.list("X"));
+        bookList = dao.findBooks(asList("X"));
         i = bookList.get(0);
         // TODO: test failing (value not cached)
         assertEquals("XYZ", i.getBookGenres().get(0).getName());

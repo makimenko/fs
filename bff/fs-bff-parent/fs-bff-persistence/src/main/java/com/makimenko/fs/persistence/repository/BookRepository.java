@@ -14,12 +14,12 @@ public interface BookRepository extends MongoRepository<Book, UUID> {
     @Query(value = "{'title': {$regex : ?0, $options: 'i'}}")
     List<Book> findByTitle(String title);
 
-    @Query(value = "{'bookGenreIds': {$in : [?0]} }")
-    List<Book> findByBookGenre(List<String> bookGenreIds);
+    @Query(value = "{'bookGenres': {$in : [?0]} }")
+    List<Book> findByBookGenre(List<String> bookGenres);
 
     @Query(
-            value = "{'bookGenreIds': {$in : [?0]} }",
-            fields = "{id:1, title:1, bookGenreIds:1}"
+            value = "{'bookGenres': {$in : [?0]} }",
+            fields = "{id:1, title:1, bookGenres:1}"
     )
     List<Book> findBookList(List<String> bookGenreIds);
 

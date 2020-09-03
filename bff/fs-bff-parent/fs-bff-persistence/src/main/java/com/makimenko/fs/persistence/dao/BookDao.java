@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface BookDao {
 
-    List<BookList> findBooks(List<String> bookGenreIds);
+    List<BookList> findBooks(List<String> bookGenres);
 
 }
