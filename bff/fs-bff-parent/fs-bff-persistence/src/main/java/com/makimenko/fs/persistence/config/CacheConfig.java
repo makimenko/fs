@@ -1,5 +1,6 @@
 package com.makimenko.fs.persistence.config;
 
+import com.makimenko.fs.persistence.repository.BookGenreRepository;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCache;
@@ -17,7 +18,7 @@ public class CacheConfig {
     public CacheManager cacheManager() {
         SimpleCacheManager cacheManager = new SimpleCacheManager();
         cacheManager.setCaches(Arrays.asList(
-                new ConcurrentMapCache("cachedBookGenre"))
+                new ConcurrentMapCache(BookGenreRepository.CACHE_ID))
         );
         return cacheManager;
     }

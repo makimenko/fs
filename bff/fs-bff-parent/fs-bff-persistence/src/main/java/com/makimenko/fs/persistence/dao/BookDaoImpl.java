@@ -1,15 +1,16 @@
 package com.makimenko.fs.persistence.dao;
 
 import com.makimenko.fs.domain.book.Book;
-import com.makimenko.fs.domain.book.BookGenre;
 import com.makimenko.fs.domain.book.BookList;
-import com.makimenko.fs.persistence.cache.BookGenreCache;
+import com.makimenko.fs.persistence.repository.BookGenreRepository;
 import com.makimenko.fs.persistence.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.makimenko.fs.persistence.dao.DaoUtils.refList;
 
 @Component
 public class BookDaoImpl implements BookDao {
@@ -18,7 +19,7 @@ public class BookDaoImpl implements BookDao {
     private BookRepository bookRepo;
 
     @Autowired
-    private BookGenreCache bookGenreCache;
+    private BookGenreRepository bookGenreRepository;
 
     public BookDaoImpl(BookRepository bookRepo) {
         this.bookRepo = bookRepo;
@@ -38,10 +39,9 @@ public class BookDaoImpl implements BookDao {
         BookList result = new BookList();
         result.setId(book.getId());
         result.setTitle(book.getTitle());
-        result.setBookGenres(bookGenreCache.findAll(book.getBookGenreIds()));
+        result.setBookGenres(refList(book.getBookGenreIds(), bookGenreRepository::findById));
         return result;
     }
-
 
 
 }
