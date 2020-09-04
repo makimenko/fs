@@ -10,11 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @ToString(callSuper = true)
 public class Author extends Person {
 
-    String licenseId;
-    BookGenre bookGenre;
-
-    public static void main(String[] args) {
-
-    }
+    private String licenseId;
 
 }

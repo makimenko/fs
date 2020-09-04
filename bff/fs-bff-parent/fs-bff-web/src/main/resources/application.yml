@@ -24,7 +24,7 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-      database: fs
+      database: db
       username: root
       password: example
       authentication-database: admin
@@ -37,7 +37,7 @@ spring:
     mongodb:
       host: makimenko-fs-dev-app-db.azurewebsites.net
       port: 27017
-      database: fs
+      database: db
       username: root
       password: example
       authentication-database: admin

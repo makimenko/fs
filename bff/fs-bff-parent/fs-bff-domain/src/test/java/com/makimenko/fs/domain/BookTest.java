@@ -23,7 +23,6 @@ public class BookTest {
         Author author = new Author();
         author.setId(UUID.randomUUID());
         author.setName("Nick");
-        author.setBookGenre(detective);
         author.setLicenseId("LIC1");
         author.setBirthDate(LocalDate.now());
 

@@ -18,25 +18,25 @@ public class LibraryController {
 
     protected static final String REST_PATH = "/api/v1";
 
-    private BookRepository bookRepo;
+    private BookRepository bookRepository;
 
-    public LibraryController(BookRepository bookRepo) {
-        this.bookRepo = bookRepo;
+    public LibraryController(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 
     @GetMapping("/books")
     public List<Book> getAllBooks() {
-        return bookRepo.findAll();
+        return bookRepository.findAll();
     }
 
     @GetMapping("/books/{id}")
     public Optional<Book> getBook(@PathVariable UUID id) {
-        return bookRepo.findById(id);
+        return bookRepository.findById(id);
     }
 
     @PostMapping("/books")
     public Book createBook(@Valid @RequestBody Book bookEntity) {
-        return bookRepo.save(bookEntity);
+        return bookRepository.save(bookEntity);
     }
 
 }
