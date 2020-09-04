@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
-public class BookRepositoryTest extends AbstractBookTest {
+public class BookRepositoryTest extends AbstractTest {
 
     @Test
     public void createAndRead() {

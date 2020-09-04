@@ -1,23 +1,26 @@
-package com.makimenko.fs.persistence.service;
+package com.makimenko.fs.web.service.book;
 
 import com.makimenko.fs.domain.book.Book;
+import com.makimenko.fs.domain.book.BookGenre;
 import com.makimenko.fs.domain.book.BookList;
 import com.makimenko.fs.persistence.repository.BookGenreRepository;
 import com.makimenko.fs.persistence.repository.BookRepository;
+import com.makimenko.fs.web.service.ServiceException;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
-import static com.makimenko.fs.persistence.service.ServiceUtils.refList;
+import static com.makimenko.fs.web.service.ServiceUtils.refList;
 
-@Component
+@Service
 public class BookServiceImpl implements BookService {
 
     @Autowired
@@ -28,6 +31,7 @@ public class BookServiceImpl implements BookService {
 
     @Autowired
     private BookGenreRepository bookGenreRepository;
+
 
     public BookServiceImpl(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
@@ -60,6 +64,29 @@ public class BookServiceImpl implements BookService {
         return convertedList;
     }
 
+    @Override
+    public Book getBook(UUID id) {
+        return bookRepository.findById(id)
+                .orElseThrow(() -> new ServiceException("Book not found: " + id));
+    }
+
+    @Override
+    public Book saveBook(Book book) {
+        return bookRepository.save(book);
+    }
+
+    @Override
+    public BookGenre getBookGenre(String id) {
+        return bookGenreRepository.findById(id)
+                .orElseThrow(() -> new ServiceException("BookGenre not found: " + id));
+    }
+
+    @Override
+    public BookGenre saveBookGenre(BookGenre bookGenre) {
+        return bookGenreRepository.save(bookGenre);
+    }
+
+
     private Criteria getCriteria(BookSearchFilter filter) {
         Criteria criteria = new Criteria();
         if (filter != null) {
@@ -80,7 +107,7 @@ public class BookServiceImpl implements BookService {
         BookList result = new BookList();
         result.setId(book.getId());
         result.setTitle(book.getTitle());
-        result.setBookGenres(refList(book.getBookGenres(), bookGenreRepository::findById));
+        result.setBookGenres(refList(book.getBookGenres(), this::getBookGenre));
         return result;
     }
 

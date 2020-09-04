@@ -1,4 +1,4 @@
-package com.makimenko.fs.persistence.book;
+package com.makimenko.fs.web.service.book;
 
 import com.makimenko.fs.domain.book.Book;
 import com.makimenko.fs.domain.book.BookGenre;
@@ -12,7 +12,7 @@ import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class BookServiceCacheTest extends AbstractBookTest {
+public class BookServiceCacheTest extends AbstractTest {
 
     @Test
     public void cachedRefData() {
@@ -20,21 +20,21 @@ public class BookServiceCacheTest extends AbstractBookTest {
         BookGenre comedy = new BookGenre();
         comedy.setId("X");
         comedy.setName("XYZ");
-        bookGenreRepository.save(comedy);
+        bookService.saveBookGenre(comedy);
 
         // Create book
         Book book = new Book();
         book.setId(UUID.randomUUID());
         book.setTitle("Test Book");
         book.setBookGenres(asList("X"));
-        bookRepository.save(book);
+        bookService.saveBook(book);
 
         // Validate:
         List<BookList> bookList;
-        bookList = service.findBooks(asList("Y"));
+        bookList = bookService.findBooks(asList("Y"));
         assertEquals(0, bookList.size());
 
-        bookList = service.findBooks(asList("X"));
+        bookList = bookService.findBooks(asList("X"));
         assertEquals(1, bookList.size());
 
         BookList i = bookList.get(0);
@@ -42,10 +42,9 @@ public class BookServiceCacheTest extends AbstractBookTest {
         assertNotNull(i.getBookGenres());
         assertEquals("XYZ", i.getBookGenres().get(0).getName());
 
-
         comedy.setName("XYZ-UPDATED");
-        bookGenreRepository.save(comedy);
-        bookList = service.findBooks(asList("X"));
+        bookService.saveBookGenre(comedy);
+        bookList = bookService.findBooks(asList("X"));
         i = bookList.get(0);
         // TODO: test failing (value not cached)
         assertEquals("XYZ", i.getBookGenres().get(0).getName());

@@ -1,4 +1,4 @@
-package com.makimenko.fs.persistence.service;
+package com.makimenko.fs.web.service.book;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
