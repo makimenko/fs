@@ -1,4 +1,4 @@
-package com.makimenko.fs.persistence.dao;
+package com.makimenko.fs.persistence.service;
 
 import com.makimenko.fs.domain.RefData;
 import com.makimenko.fs.persistence.exception.DaoException;
@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class DaoUtils {
+public class ServiceUtils {
 
     public static <T extends RefData> List<T> refList(List<String> ids, Function<String, Optional<T>> findById) {
         if (ids != null) {

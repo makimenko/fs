@@ -1,8 +1,7 @@
-package com.makimenko.fs.persistence.dao;
+package com.makimenko.fs.persistence.service;
 
 import com.makimenko.fs.domain.book.Book;
 import com.makimenko.fs.domain.book.BookList;
-import com.makimenko.fs.domain.book.BookSearchFilter;
 import com.makimenko.fs.persistence.repository.BookGenreRepository;
 import com.makimenko.fs.persistence.repository.BookRepository;
 import org.apache.logging.log4j.util.Strings;
@@ -16,13 +15,13 @@ import org.springframework.util.CollectionUtils;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.makimenko.fs.persistence.dao.DaoUtils.refList;
+import static com.makimenko.fs.persistence.service.ServiceUtils.refList;
 
 @Component
-public class BookDaoImpl implements BookDao {
+public class BookServiceImpl implements BookService {
 
     @Autowired
-    private BookRepository bookRepo;
+    private BookRepository bookRepository;
 
     @Autowired
     private MongoTemplate mongoTemplate;
@@ -30,13 +29,13 @@ public class BookDaoImpl implements BookDao {
     @Autowired
     private BookGenreRepository bookGenreRepository;
 
-    public BookDaoImpl(BookRepository bookRepo) {
-        this.bookRepo = bookRepo;
+    public BookServiceImpl(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 
     @Override
     public List<BookList> findBooks(List<String> bookGenres) {
-        List<BookList> result = bookRepo.findBookList(bookGenres)
+        List<BookList> result = bookRepository.findBookList(bookGenres)
                 .stream()
                 .map(this::toBookList)
                 .collect(Collectors.toList());
@@ -71,7 +70,7 @@ public class BookDaoImpl implements BookDao {
                 criteria.and("authors").in(filter.getAuthors());
             }
             if (!Strings.isBlank(filter.getTitle())) {
-                criteria.and("title").in(filter.getTitle());
+                criteria.and("title").regex(filter.getTitle(), "i");
             }
         }
         return criteria;

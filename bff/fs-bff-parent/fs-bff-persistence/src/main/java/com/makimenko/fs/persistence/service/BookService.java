@@ -1,11 +1,10 @@
-package com.makimenko.fs.persistence.dao;
+package com.makimenko.fs.persistence.service;
 
 import com.makimenko.fs.domain.book.BookList;
-import com.makimenko.fs.domain.book.BookSearchFilter;
 
 import java.util.List;
 
-public interface BookDao {
+public interface BookService {
 
     List<BookList> findBooks(List<String> bookGenres);
 
