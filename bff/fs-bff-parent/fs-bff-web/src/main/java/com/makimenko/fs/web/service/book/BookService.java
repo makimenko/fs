@@ -7,18 +7,7 @@ import org.bson.types.ObjectId;
 
 import java.util.List;
 
-public interface BookService {
+public interface BookService extends StandardService<Book, BookList> {
 
-    List<BookList> findBooks(List<String> bookGenres);
-
-    List<BookList> findBooks(BookSearchFilter filter);
-
-    Book getBook(ObjectId id);
-
-    Book saveBook(Book book);
-
-    BookGenre getBookGenre(String id);
-
-    BookGenre saveBookGenre(BookGenre bookGenre);
 
 }

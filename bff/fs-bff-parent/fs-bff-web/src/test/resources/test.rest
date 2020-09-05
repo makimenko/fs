@@ -1,4 +1,10 @@
-GET http://localhost:5000/api/v1/books
+GET http://localhost:5000/api/v1/book
 
 ###
-GET http://localhost:5000/api/v1/authors
+GET http://localhost:5000/api/v1/author
+
+###
+GET http://localhost:5000/api/v1/bookGenre
+
+###
+GET http://localhost:5000/api/v1/bookGenre/FAN

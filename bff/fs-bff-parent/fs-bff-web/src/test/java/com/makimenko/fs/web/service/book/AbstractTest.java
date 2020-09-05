@@ -14,6 +14,9 @@ public abstract class AbstractTest {
     protected BookService bookService;
 
     @Autowired
+    protected BookGenreService bookGenreService;
+
+    @Autowired
     protected AuthorService authorService;
 
 }
