@@ -1,13 +1,9 @@
 package com.makimenko.fs.web.service.book;
 
 import com.makimenko.fs.domain.book.Author;
+import com.makimenko.fs.domain.book.AuthorList;
+import org.bson.types.ObjectId;
 
-import java.util.UUID;
-
-public interface AuthorService {
-
-    Author getAuthor(UUID id);
-
-    Author saveAuthor(Author author);
+public interface AuthorService extends StandardService<Author, AuthorList> {
 
 }

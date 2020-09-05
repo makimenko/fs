@@ -3,10 +3,10 @@ package com.makimenko.fs.web.service.book;
 import com.makimenko.fs.domain.book.Book;
 import com.makimenko.fs.domain.book.BookGenre;
 import com.makimenko.fs.domain.book.BookList;
+import org.bson.types.ObjectId;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.UUID;
 
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
@@ -20,21 +20,21 @@ public class BookServiceCacheTest extends AbstractTest {
         BookGenre comedy = new BookGenre();
         comedy.setId("X");
         comedy.setName("XYZ");
-        bookService.saveBookGenre(comedy);
+        bookGenreService.save(comedy);
 
         // Create book
         Book book = new Book();
-        book.setId(UUID.randomUUID());
+        book.setId(ObjectId.get());
         book.setTitle("Test Book");
         book.setBookGenres(asList("X"));
-        bookService.saveBook(book);
+        bookService.save(book);
 
         // Validate:
         List<BookList> bookList;
-        bookList = bookService.findBooks(asList("Y"));
+        bookList = bookService.find(bookGenres("Y"));
         assertEquals(0, bookList.size());
 
-        bookList = bookService.findBooks(asList("X"));
+        bookList = bookService.find(bookGenres("X"));
         assertEquals(1, bookList.size());
 
         BookList i = bookList.get(0);
@@ -43,11 +43,18 @@ public class BookServiceCacheTest extends AbstractTest {
         assertEquals("XYZ", i.getBookGenres().get(0).getName());
 
         comedy.setName("XYZ-UPDATED");
-        bookService.saveBookGenre(comedy);
-        bookList = bookService.findBooks(asList("X"));
+        bookGenreService.save(comedy);
+        bookList = bookService.find(bookGenres("X"));
         i = bookList.get(0);
         // TODO: test failing (value not cached)
         assertEquals("XYZ", i.getBookGenres().get(0).getName());
     }
+
+    private Book bookGenres(String... bookGenres) {
+        Book template = new Book();
+        template.setBookGenres(asList(bookGenres));
+        return template;
+    }
+
 
 }

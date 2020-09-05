@@ -3,11 +3,11 @@ package com.makimenko.fs.persistence.repository;
 import com.makimenko.fs.domain.book.BookGenre;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Component
+@Repository
 public interface BookGenreRepository extends MongoRepository<BookGenre, String> {
 
     String CACHE_ID = "BookGenreRepository";

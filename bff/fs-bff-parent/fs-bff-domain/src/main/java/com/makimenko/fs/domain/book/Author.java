@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document("author")
 @Data
 @ToString(callSuper = true)
 public class Author extends Person {
