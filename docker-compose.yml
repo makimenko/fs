@@ -12,6 +12,8 @@ services:
       MONGO_INITDB_DATABASE: db
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - ./db/data:/app/db/data
   db-admin:
     depends_on:
       - db

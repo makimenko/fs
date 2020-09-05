@@ -3,10 +3,9 @@ package com.makimenko.fs.web.service.book;
 import com.makimenko.fs.domain.book.Author;
 import com.makimenko.fs.persistence.repository.AuthorRepository;
 import com.makimenko.fs.web.service.ServiceException;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.UUID;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {
@@ -15,7 +14,7 @@ public class AuthorServiceImpl implements AuthorService {
     private AuthorRepository authorRepository;
 
     @Override
-    public Author getAuthor(UUID id) {
+    public Author getAuthor(ObjectId id) {
         return authorRepository.findById(id)
                 .orElseThrow(() -> new ServiceException("Author not found by id: " + id));
     }

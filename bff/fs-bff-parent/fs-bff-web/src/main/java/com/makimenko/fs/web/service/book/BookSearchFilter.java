@@ -2,9 +2,9 @@ package com.makimenko.fs.web.service.book;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.bson.types.ObjectId;
 
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -12,7 +12,7 @@ public class BookSearchFilter {
 
     private String title;
 
-    private List<UUID> authors;
+    private List<ObjectId> authors;
 
     private List<String> bookGenres;
 

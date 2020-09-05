@@ -4,11 +4,11 @@ import com.makimenko.fs.domain.book.Author;
 import com.makimenko.fs.domain.book.Book;
 import com.makimenko.fs.domain.book.BookGenre;
 import com.makimenko.fs.domain.book.BookList;
+import org.bson.types.ObjectId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.UUID;
 
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
@@ -17,9 +17,9 @@ public class BookServiceTest extends AbstractTest {
 
     public static final String BOOK_GENRE_L1 = "L1";
     public static final String BOOK_GENRE_L2 = "L2";
-    public static final UUID AUTHOR_K1 = UUID.randomUUID();
-    public static final UUID AUTHOR_K2 = UUID.randomUUID();
-    public static final UUID BOOK_B1 = UUID.randomUUID();
+    public static final ObjectId AUTHOR_K1 = ObjectId.get();
+    public static final ObjectId AUTHOR_K2 = ObjectId.get();
+    public static final ObjectId BOOK_B1 = ObjectId.get();
     public static final String TITLE_B1 = "Dream Book";
     public static final String NOT_EXISTS = "NOT EXISTS";
 
@@ -138,7 +138,7 @@ public class BookServiceTest extends AbstractTest {
     @Test
     public void authorNotExists() {
         BookSearchFilter filter = new BookSearchFilter();
-        filter.setAuthors(asList(UUID.randomUUID()));
+        filter.setAuthors(asList(ObjectId.get()));
         filter.setBookGenres(asList(BOOK_GENRE_L1));
         filter.setTitle(TITLE_B1);
         List<BookList> searchResult = bookService.findBooks(filter);

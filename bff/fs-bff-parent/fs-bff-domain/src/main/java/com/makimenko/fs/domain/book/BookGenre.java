@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document("bookGenre")
 @Data
 @ToString(callSuper = true)
 public class BookGenre extends RefData {

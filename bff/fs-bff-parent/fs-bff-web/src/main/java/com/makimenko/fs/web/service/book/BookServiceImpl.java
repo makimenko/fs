@@ -7,6 +7,7 @@ import com.makimenko.fs.persistence.repository.BookGenreRepository;
 import com.makimenko.fs.persistence.repository.BookRepository;
 import com.makimenko.fs.web.service.ServiceException;
 import org.apache.logging.log4j.util.Strings;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -15,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 import static com.makimenko.fs.web.service.ServiceUtils.refList;
@@ -65,7 +65,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book getBook(UUID id) {
+    public Book getBook(ObjectId id) {
         return bookRepository.findById(id)
                 .orElseThrow(() -> new ServiceException("Book not found: " + id));
     }

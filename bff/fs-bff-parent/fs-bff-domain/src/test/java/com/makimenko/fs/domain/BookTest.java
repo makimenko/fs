@@ -2,11 +2,11 @@ package com.makimenko.fs.domain;
 
 import com.makimenko.fs.domain.book.Author;
 import com.makimenko.fs.domain.book.BookGenre;
+import org.bson.types.ObjectId;
 import org.junit.Test;
 
 import java.io.*;
 import java.time.LocalDate;
-import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -21,7 +21,7 @@ public class BookTest {
         detective.setName("Detective");
 
         Author author = new Author();
-        author.setId(UUID.randomUUID());
+        author.setId(ObjectId.get());
         author.setName("Nick");
         author.setLicenseId("LIC1");
         author.setBirthDate(LocalDate.now());
