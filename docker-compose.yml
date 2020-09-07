@@ -3,7 +3,7 @@ services:
   db:
     build:
       context: ./db
-    image: db
+    image: docker.pkg.github.com/makimenko/fs/db:latest
     container_name: fs-db
     restart: always
     ports:
@@ -31,7 +31,7 @@ services:
       - db
     build:
       context: ./bff
-    image: bff
+    image: docker.pkg.github.com/makimenko/fs/bff:latest
     environment:
       PROFILE: dev
     ports:
@@ -41,6 +41,6 @@ services:
       - bff
     build:
       context: ./spa
-    image: spa
+    image: docker.pkg.github.com/makimenko/fs/spa:latest
     ports:
       - '8080:8080'

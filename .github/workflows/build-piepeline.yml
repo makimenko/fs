@@ -22,8 +22,9 @@ jobs:
     - name: Tag and Push Images
       if: ${{ github.ref == 'refs/heads/master' }}
       run: |
-        docker tag ${{ matrix.component }} docker.pkg.github.com/makimenko/fs/${{ matrix.component }}:${{ github.run_number }}
+        docker tag  docker.pkg.github.com/makimenko/fs/${{ matrix.component }}:latest docker.pkg.github.com/makimenko/fs/${{ matrix.component }}:${{ github.run_number }}
         docker push docker.pkg.github.com/makimenko/fs/${{ matrix.component }}:${{ github.run_number }}
+        docker push docker.pkg.github.com/makimenko/fs/${{ matrix.component }}:latest
 
 
   # deploy:
