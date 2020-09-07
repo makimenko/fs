@@ -9,7 +9,7 @@ import {environment} from '../../../environments/environment';
 })
 export class BooksApiService {
 
-  private url = environment.bffUrl + '/books';
+  private url = environment.bffUrl + '/book';
 
   constructor(private http: HttpClient) {
   }

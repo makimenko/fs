@@ -1,4 +1,6 @@
+const env = window.env || {};
+
 export const environment = {
   production: true,
-  bffUrl: 'http://localhost:5000/api/v1'
+  bffUrl: env.BFF_URL
 };

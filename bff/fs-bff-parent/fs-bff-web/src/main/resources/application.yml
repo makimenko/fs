@@ -32,10 +32,10 @@ spring:
 
 ---
 spring:
-  profiles: dev
+  profiles: docker-compose
   data:
     mongodb:
-      host: makimenko-fs-dev-app-db.azurewebsites.net
+      host: db
       port: 27017
       database: db
       username: root
