@@ -61,34 +61,6 @@
                   "maximumError": "2mb"
                 }
               ]
-            },
-            "docker-compose": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.docker-compose.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "6mb",
-                  "maximumError": "8mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "1mb",
-                  "maximumError": "2mb"
-                }
-              ]
             }
           }
         },
@@ -100,9 +72,6 @@
           "configurations": {
             "production": {
               "browserTarget": "ui:build:production"
-            },
-            "docker-compose": {
-              "browserTarget": "ui:build:docker-compose"
             }
           }
         },

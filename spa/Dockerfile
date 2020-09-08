@@ -7,7 +7,7 @@ COPY package.json package-lock.json ./
 RUN npm ci --no-color
 
 COPY . .
-RUN npx ng build --configuration="docker-compose"
+RUN npx ng build
 
 # ------------------------------- 2. Copy Angular from builder and Run web-server
 FROM nginx:latest
