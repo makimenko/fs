@@ -11,7 +11,7 @@ RUN mvn package
 FROM openjdk:latest
 WORKDIR /app/backend
 
-ENV jarFile fs-bff-web-1.0.0.jar
+ENV jarFile fs-bff-web-exec.jar
 
 COPY --from=builder /app/backend-builder/fs-bff-web/target/${jarFile} /app/backend/${jarFile}
 
