@@ -1,3 +1,7 @@
 <button mat-raised-button (click)="reload()">Reload</button>
 
-<p *ngFor="let book of books">{{book.id}} - {{book.title}}</p>
+<mat-grid-list cols="4" rowHeight="2:1">
+  <mat-grid-tile *ngFor="let book of books">
+    <app-book-list-item [book]="book"></app-book-list-item>
+  </mat-grid-tile>
+</mat-grid-list>
