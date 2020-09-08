@@ -12,7 +12,6 @@ import java.util.List;
 
 @Api(tags = "Authors", description = "Authors operations")
 @RestController
-@CrossOrigin()
 @RequestMapping(AuthorController.REST_PATH)
 public class AuthorController {
 
