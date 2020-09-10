@@ -45,7 +45,7 @@ function getRandomReferences(collection, min, max) {
 
 //----------------------------------------------------------------------
 db.author.drop();
-for (var i = 1; i <= 10; i++) {    
+for (var i = 1; i <= 20; i++) {    
   db.author.insert( 
     { 
       name : generatePersonName(),
@@ -57,7 +57,7 @@ for (var i = 1; i <= 10; i++) {
 
 //----------------------------------------------------------------------
 db.book.drop();
-for (var i = 1; i <= 10; i++) {    
+for (var i = 1; i <= 100; i++) {    
   db.book.insert( 
     { 
       isbn: getRandomInt(1231434232,9231434232),
