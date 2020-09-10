@@ -26,9 +26,20 @@
     - [Docker](https://www.docker.com), including [Docker Compose](https://docs.docker.com/compose/)
     - [nginx](https://www.nginx.com)
 
-
-# Build
+# Local Build
 
 ```
 docker-compose build
 ```
+
+
+# Run
+
+If you don't want to build local images, then you can download it from [GitHub Container Registry](https://github.com/makimenko/fs/packages) and run it:
+```
+docker-compose pull
+docker-compose up spa
+```
+then open http://localhost:8080
+
+

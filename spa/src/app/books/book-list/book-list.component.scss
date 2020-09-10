@@ -1,0 +1,15 @@
+@import '../../../theme.scss';
+
+mat-grid-tile {
+    // Use mat-color to extract individual colors from a palette.
+    background-color: mat-color($primary, 0.01);
+}
+
+.content {
+  padding: 16px;
+  width: 100%;
+}
+
+.content > mat-card {
+  margin-bottom: 16px;
+}

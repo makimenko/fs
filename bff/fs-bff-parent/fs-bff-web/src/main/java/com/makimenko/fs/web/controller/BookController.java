@@ -24,9 +24,9 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping
-    public List<BookList> get(@RequestBody(required = false) Book template) {
-        return bookService.find(template);
+    @PostMapping(path = "/find")
+    public List<BookList> find(@RequestBody(required = false) Book templateBook) {
+        return bookService.find(templateBook);
     }
 
     @GetMapping("{id}")
