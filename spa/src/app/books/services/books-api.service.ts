@@ -9,13 +9,16 @@ import {environment} from '../../../environments/environment';
 })
 export class BooksApiService {
 
-  private url = environment.bffUrl + '/book';
+  private baseUrl = environment.bffUrl + '/book';
+  private findUrl = this.baseUrl + '/find';
 
   constructor(private http: HttpClient) {
   }
 
-  public getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.url);
+  public getBooks(templateBook: Book): Observable<Book[]> {
+
+    console.log('POST:', templateBook);
+    return this.http.post<Book[]>(this.findUrl, templateBook);
   }
 
 }

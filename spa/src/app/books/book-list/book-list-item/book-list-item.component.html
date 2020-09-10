@@ -1,1 +1,15 @@
-<h5>{{book.title}}</h5>
+<mat-card class="mat-elevation-z4">
+  <mat-card-header>
+    <mat-card-title>{{book.title}}</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src="./../assets/images/book.png">
+  <mat-card-content>
+    <mat-chip-list>
+      <mat-chip *ngFor="let bookGenre of book.bookGenres">{{bookGenre.name}}</mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>BUY</button>
+    <button mat-button>LIKE</button>
+  </mat-card-actions>
+</mat-card>

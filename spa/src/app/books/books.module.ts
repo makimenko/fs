@@ -14,6 +14,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldControl, MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import {MatChipsModule} from "@angular/material/chips";
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule,
+    MatChipsModule
   ]
 })
 export class BooksModule {
