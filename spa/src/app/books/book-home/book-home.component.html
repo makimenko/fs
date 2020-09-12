@@ -1,2 +1,11 @@
-<app-book-toolbar (onFilterChange)="list.search($event)"></app-book-toolbar>
-<app-book-list #list></app-book-list>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="over">
+    <app-book-genre-filter></app-book-genre-filter>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <app-book-toolbar (filterChange)="list.search($event)" (toggleToolbar)="drawer.toggle()"></app-book-toolbar>
+    <app-book-list #list></app-book-list>
+  </div>
+
+</mat-drawer-container>

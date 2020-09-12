@@ -16,13 +16,17 @@ import {MatSelectModule} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import {MatChipsModule} from "@angular/material/chips";
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { BookGenreFilterComponent } from './book-genre-filter/book-genre-filter.component';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
     BookListComponent,
     BookListItemComponent,
     BookHomeComponent,
-    BookToolbarComponent
+    BookToolbarComponent,
+    BookGenreFilterComponent
   ],
   exports: [
     BookListComponent,
@@ -41,7 +45,9 @@ import {MatChipsModule} from "@angular/material/chips";
     MatSelectModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSidenavModule,
+    MatListModule
   ]
 })
 export class BooksModule {
