@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Book} from "../model/book";
-import {FormControl, FormGroup} from "@angular/forms";
-import {BooksApiService} from "../services/books-api.service";
+import {Book} from '../model/book';
+import {FormControl, FormGroup} from '@angular/forms';
+import {BooksApiService} from '../services/books-api.service';
 
 @Component({
   selector: 'app-book-toolbar',
@@ -15,7 +15,10 @@ export class BookToolbarComponent implements OnInit {
   });
 
   @Output()
-  onFilterChange: EventEmitter<Book> = new EventEmitter<Book>();
+  filterChange: EventEmitter<Book> = new EventEmitter<Book>();
+
+  @Output()
+  toggleToolbar: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private bookApiService: BooksApiService) {
   }
@@ -24,9 +27,9 @@ export class BookToolbarComponent implements OnInit {
   }
 
 
-  onSubmit() {
+  submit(): void {
     console.log(this.searchForm.value);
-    this.onFilterChange.emit(this.searchForm.value)
+    this.filterChange.emit(this.searchForm.value);
   }
 
 }

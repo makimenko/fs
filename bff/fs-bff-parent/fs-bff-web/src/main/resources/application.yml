@@ -28,6 +28,7 @@ spring:
       username: root
       password: example
       authentication-database: admin
+      auto-index-creation: on
 
 
 ---
